@@ -86,27 +86,6 @@ void runP5(int s, int e, double st)
     exportKML(p, "solution_p5.kml", "ff800080");
 }
 
-void runP6(int s, int e, double st, double dl)
-{
-    cout << "=== Problem 6: Constrained Cheapest (Deadlined) ===" << endl;
-    map<EdgeType, double> cost;
-    cost[ROAD] = 20;
-    cost[METRO] = 5;
-    cost[BUS_BIKOLPO] = 7;
-    cost[BUS_UTTARA] = 10;
-    cost[WALKING] = 0;
-    map<EdgeType, double> speed;
-    speed[ROAD] = 20;
-    speed[METRO] = 15;
-    speed[BUS_BIKOLPO] = 10;
-    speed[BUS_UTTARA] = 12;
-    speed[WALKING] = 2;
-    vector<EdgeType> m = {ROAD, METRO, BUS_BIKOLPO, BUS_UTTARA, WALKING};
-
-    SolutionPath p = dijkstra_constrained(s, e, st, dl, cost, speed, m);
-    printPathDescription(p, st, cost, speed, 6);
-    exportKML(p, "solution_p6.kml", "ff0080ff");
-}
 
 int main()
 {
@@ -169,7 +148,7 @@ int main()
     runP3(startNode, endNode);
     runP4(startNode, endNode, gStart);
     runP5(startNode, endNode, gStart);
-    runP6(startNode, endNode, gStart, gDead);
+    
 
     return 0;
 }
